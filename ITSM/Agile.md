@@ -1,7 +1,3 @@
-Perfect — here’s a **classroom-friendly breakdown of Agile methodology** you can use as course content:
-
----
-
 # **Agile Methodology Overview**
 
 Agile is a **philosophy of software development** focused on **collaboration, flexibility, and delivering value quickly**. Instead of rigid long-term planning, Agile emphasizes **short cycles of work, continuous feedback, and adapting to change**.
