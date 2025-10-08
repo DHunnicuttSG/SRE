@@ -1,9 +1,3 @@
-Excellent 👍 — running **cron jobs on AWS** involves the same principles as on any Linux system, but with **cloud-specific best practices** and **AWS services** that make automation, reliability, and scaling easier.
-
-Below is a rewritten and expanded version of your **crontab lesson**, tailored specifically for **AWS environments** — including **EC2**, **AWS Lambda (CloudWatch Events)**, and **ECS (Fargate)** setups.
-
----
-
 # ⏰ **Using `cron` and Scheduling Jobs on AWS**
 
 ---
@@ -243,4 +237,3 @@ cron(0/15 * * * ? *)
 
 ---
 
-Would you like me to add a **Mermaid flowchart** showing how these three AWS cron approaches (EC2 cron, EventBridge + Lambda, ECS Scheduled Tasks) differ in execution flow? It’s an excellent visual for teaching cloud automation.

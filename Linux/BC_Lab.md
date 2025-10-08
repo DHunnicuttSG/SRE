@@ -1,8 +1,3 @@
-Perfect 👍 — here’s a **hands-on classroom exercise set** for learning and practicing the **`bc` command** in Linux.
-These activities gradually move from simple arithmetic to applied scripting — ideal for a short lab or demonstration.
-
----
-
 # 🧮 **Classroom Lab: Using `bc` in Linux**
 
 ---
@@ -160,4 +155,3 @@ Enter temperature in Fahrenheit: 68
 
 ---
 
-Would you like me to create a **Mermaid flowchart** that visually shows how Bash variables and `bc` interact in a calculation (input → expression → bc → output)? It’s a great visual reinforcement for students.

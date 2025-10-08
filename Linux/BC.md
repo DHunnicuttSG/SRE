@@ -1,9 +1,3 @@
-Excellent 👏 — the **`bc`** command (short for *Basic Calculator*) is a **command-line calculator and expression evaluator** that’s great for doing math in Linux — especially **floating-point (decimal)** arithmetic, which Bash’s built-in math doesn’t handle well.
-
-Here’s how to use it step by step 👇
-
----
-
 # 🧮 **Using `bc` (Basic Calculator) in Linux**
 
 ---
@@ -163,4 +157,3 @@ Output:
 
 ---
 
-Would you like me to add a **short classroom exercise** (like calculating averages, converting Fahrenheit ↔ Celsius, or using `bc` in a shell script)?

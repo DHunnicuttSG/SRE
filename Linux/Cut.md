@@ -1,9 +1,3 @@
-Excellent — the `cut` command is one of those **small but mighty** Linux utilities every sysadmin and data wrangler should know. It’s perfect for **extracting specific columns, fields, or characters** from lines of text, CSV files, or command outputs.
-
-Let’s go through a complete **lesson + examples + practice exercises** 👇
-
----
-
 # ✂️ **Using the `cut` Command in Linux**
 
 ---
@@ -237,5 +231,3 @@ Create a one-liner that prints only the **process names** from `ps aux` (skip he
 | Works with pipes | Filter text            | `cat file          | cut ...` |
 
 ---
-
-Would you like me to add a **Mermaid flowchart** showing how `cut` processes input text (line → delimiter split → field extraction → output)? It’s a nice visual aid for learners.
