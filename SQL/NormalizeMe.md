@@ -7,4 +7,4 @@
 | 5         | Emma Thompson   | C226     | Java       | Dr. Aman       | Rm307            | Fall 2025 | B     | CompSci    |
 | 6         | Frank Rivera    | C226     | Python     | Dr. Tan        | Rm421            | Fall 2025 | A     | Physics    | 
 | 7         | Grace Kim       | C128     | Python     | Dr. Tan        | Rm421            | Fall 2025 | A     | Physics    |
-| 8         | Henry Lopez     | C128     | C#         | Dr. Green      | Rm222            | Fall 2025 | B     | CompSci    |
+| 8         | Henry Lopez     | C129     | C#         | Dr. Green      | Rm222            | Fall 2025 | B     | CompSci    |
