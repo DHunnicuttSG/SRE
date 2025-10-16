@@ -12,10 +12,16 @@ create table student(
 
 create table project(
 	projectId int auto_increment primary key,
-    projectName varchar(250),
-    studentId int,
-    foreign key (studentId) references student(studentId)
+    projectName varchar(250)
 );
+
+create table student_Project(
+	studentId int,
+    projectId int,
+	foreign key (studentId) references student(studentId),
+    foreign key (projectId) references project(projectId)
+);
+
 
 insert into student(studentName, email) values 
 ("Layana Muhdi Al Tounsi","layana.muhdialtounsi@mthree.com"),
