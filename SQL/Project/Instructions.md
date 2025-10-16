@@ -23,7 +23,7 @@ Rooms 205-208 and 305-308
 
 Rooms 401 and 402  
 •	Each suite includes two separate bedrooms: one with two queen-sized beds and the other with one king-sized bed.  
-•	Each suite also includes a shared living room space with a sleeper sofa.
+•	Each suite also includes a shared living room space with a sleeper sofa.  
 •	Each suite can sleep up to 8 people.   
 •	Each suite includes a full kitchen, with a refrigerator, an electric stove and oven, and a microwave oven.  
 •	Each suite is ADA accessible.  
@@ -125,7 +125,7 @@ Using the data presented above, create an ERD that represents the database.
     **Advice is free...**
   
 **Part 2: Define the Database**  
-Create a SQL script that performs creates your database schema
+Create a SQL script that creates your database schema
 The script should run from beginning to end without errors.
 
 **Part 3: Manage the Data**  
