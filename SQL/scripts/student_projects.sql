@@ -38,7 +38,7 @@ insert into student(studentName, email) values
 ("Zachary Ceolin","zachary.ceolin@mthree.com"),
 ("Kailey Van","kailey.van@mthree.com"),
 ("Weilun Zhang","weilun.zhang@mthree.com"),
-("Krupesh Patel"," krupesh.patel@mthree.com");
+("Krupesh Patel","krupesh.patel@mthree.com");
 
 insert into project(projectName) values ("Scheduler App"),
 ("Database design"),
