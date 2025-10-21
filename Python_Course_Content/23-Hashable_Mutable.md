@@ -1,7 +1,3 @@
-Perfect 🙌 A **reference chart** will help students quickly check whether a type is mutable, hashable, and usable in sets or dictionary keys.
-
----
-
 # 📘 Python Types: Mutability & Hashability
 
 | Type        | Mutable? | Hashable? | Allowed in Set/Dict Key? | Notes                                               |
@@ -55,7 +51,5 @@ test_hashability((1, [2, 3]))
 test_hashability({1, 2})
 test_hashability(frozenset({1, 2}))
 ```
-
 ---
 
-👉 Would you like me to follow this up with a **set & dict practice section** (exercises where students try inserting different types and see which ones fail)? That could reinforce this chart nicely.
