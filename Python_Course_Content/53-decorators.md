@@ -194,4 +194,3 @@ func = decorator1(decorator2(func))
 | **Stackable**    | Multiple decorators can wrap one function                    | `@dec1 @dec2`                         |
 
 ---
-
