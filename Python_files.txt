@@ -1,0 +1,383 @@
+# config.py
+
+DB_PATH = "timeTracker.db"
+
+
+# app.py
+from datetime import datetime
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
+from flask_cors import CORS
+from model import EventModel
+
+app = Flask(__name__)
+app.secret_key = "Super_Secret_Key_{mthree}"  # replace with something unique
+CORS(app)
+
+# ---------- Authentication Routes ----------
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        model = EventModel()
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = model.authenticate_user(username, password)
+        model.close()
+        if user:
+            session['user_id'] = user['user_id']
+            session['username'] = user['username']
+            session['team'] = user['team']
+            session['region'] = user['region']
+            return redirect(url_for('index_page'))
+        return render_template('login.html', error="Invalid username or password.")
+    return render_template('login.html')
+
+# Register route
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    model = EventModel()
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        team = request.form.get('team')
+        region = request.form.get('region')
+
+        # Simple validation
+        if not username or not password or not team or not region:
+            return render_template('register.html',
+                                   error="⚠️ All fields are required.",
+                                   teams=model.get_all_teams(),
+                                   regions=model.get_all_regions())
+
+        try:
+            model.create_user(username, password, team, region)
+            model.close()
+            return redirect(url_for('login'))
+        except Exception as e:
+            model.close()
+            return render_template('register.html',
+                                   error=f"❌ Error: {str(e)}",
+                                   teams=[],
+                                   regions=[])
+
+    # GET request
+    teams = model.get_all_teams()
+    regions = model.get_all_regions()
+    model.close()
+    return render_template('register.html',
+                           teams=teams,
+                           regions=regions)
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
+
+# ---------- Protected Routes ----------
+@app.route('/')
+def index_page():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    model = EventModel()
+    events = model.get_all_events(user_id=session['user_id'])
+    activities = model.get_all_activities()
+    model.close()
+    return render_template(
+            'index.html',
+            events=events,
+            activities=activities,
+            session=session
+        )
+
+@app.route('/reports')
+@app.route('/reports/<int:month>')
+def report_page(month=None):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    if not month:
+        month = datetime.now().month
+    model = EventModel()
+    monthly, daily = model.report_total(month, user_id=session['user_id'])
+    model.close()
+
+    total_hours = sum([r['Hours'] or 0 for r in monthly])
+    total_count = sum([r['Count'] or 0 for r in monthly])
+    return render_template(
+        'report.html',
+        monthly=monthly,
+        daily=daily,
+        total_hours=total_hours,
+        total_count=total_count,
+        session=session
+    )
+
+# ---------- API Endpoints ----------
+@app.route('/events', methods=['POST'])
+def add_one():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    model = EventModel()
+    data = request.get_json() or request.form
+    required_fields = ['activity', 'hours', 'notes', 'activity_date']
+    if not all(field in data and data[field] for field in required_fields):
+        return jsonify({"error": "Missing required field(s)"}), 400
+
+    last_id = model.add_event(
+        data.get('activity'), data.get('hours'),
+        data.get('notes'), data.get('activity_date'),
+        user_id=session['user_id']
+    )
+    new_event = model.get_one_event(last_id['event_id'])
+    model.close()
+    return jsonify(new_event), 201
+
+
+@app.route('/events/<int:event_id>', methods=['DELETE'])
+def delete_one(event_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    model = EventModel()
+    model.delete_event(event_id)
+    model.close()
+    return jsonify({"message": "Event deleted successfully"}), 200
+
+
+@app.route("/events/<int:event_id>", methods=['PUT'])
+def update_event(event_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Invalid JSON"}), 400
+
+    model = EventModel()
+    event_exists = model.get_one_event(event_id)
+    if not event_exists:
+        return jsonify({"message": "Event not found"}), 404
+
+    merged = {k: data.get(k, v) for k, v in event_exists.items()}
+    model.update_event(event_id, merged["activity"], merged["hours"], merged["notes"], merged["activity_date"])
+    model.close()
+    return jsonify({"message": "✅ Event updated successfully"}), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+
+# model.py
+import sqlite3
+import bcrypt
+from config import DB_PATH
+
+class EventModel:
+    def __init__(self):
+        self.conn = sqlite3.connect(DB_PATH)
+        self.conn.row_factory = sqlite3.Row
+        self.cursor = self.conn.cursor()
+        self._create_tables()
+
+    def _create_tables(self):
+        """Create tables if they don't exist."""
+        # Activities
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS activity (
+                activity TEXT PRIMARY KEY
+            )
+        """)
+
+        # Teams
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS team (
+                team TEXT PRIMARY KEY
+            )
+        """)
+
+        # Regions
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS region (
+                region TEXT PRIMARY KEY
+            )
+        """)
+
+        # Users
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS user (
+                user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT UNIQUE NOT NULL,
+                password_hash TEXT NOT NULL,
+                role TEXT CHECK(role IN ('admin', 'user')) NOT NULL DEFAULT 'user',
+                team TEXT,
+                region TEXT,
+                FOREIGN KEY (team) REFERENCES team(team),
+                FOREIGN KEY (region) REFERENCES region(region)
+            )
+        """)
+
+        # Events
+        self.cursor.execute("""
+            CREATE TABLE IF NOT EXISTS event (
+                event_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                activity TEXT NOT NULL,
+                hours REAL NOT NULL,
+                activity_date TEXT NOT NULL,
+                notes TEXT,
+                user_id INTEGER,
+                FOREIGN KEY (activity) REFERENCES activity(activity),
+                FOREIGN KEY (user_id) REFERENCES user(user_id)
+            )
+        """)
+
+        # Add seed data (safe to ignore if already exists)
+        self.cursor.executemany(
+            "INSERT OR IGNORE INTO region (region) VALUES (?)",
+            [("APAC",), ("EMEA",), ("NA",)]
+        )
+
+        self.cursor.executemany(
+            "INSERT OR IGNORE INTO team (team) VALUES (?)",
+            [("Academy Operations & Talent Management",),
+             ("Curriculum & LMS",),
+             ("Instructor",),
+             ("Partnerships",),
+             ("Pre-sales",)]
+        )
+
+        self.cursor.executemany(
+            "INSERT OR IGNORE INTO activity (activity) VALUES (?)",
+            [
+                ("1-1 Tutoring",),
+                ("Academy & Wider Org Calls",),
+                ("Alumni Coaching",),
+                ("Alumni Development",),
+                ("Alumni Upskilling",),
+                ("Client Calls",),
+                ("Cohort Admin",),
+                ("Cohort Meetings",),
+                ("Cohort Orientation",),
+                ("Cohort Quality Management",),
+                ("Curriculum Creation",),
+                ("Curriculum Customisation",),
+                ("Curriculum Outlines",),
+                ("Data Reporting and Assessments",),
+                ("Dealing with Adhoc Issues",),
+                ("HackerEarth",),
+                ("LMS Admin",),
+                ("Networking",),
+                ("Planting Seeds",),
+                ("Professional Development",),
+                ("Projects and Initiatives",),
+                ("Rescheduling",),
+                ("External - Reskill",),
+                ("Salesforce Case Management",),
+                ("Scheduling",),
+                ("Technical Interview",),
+                ("Technical Screening",),
+                ("Training - External",),
+                ("Training - Facilitated",),
+                ("Training - Internal",),
+                ("Training Infrastucture Maintenance",)]
+        )
+
+        self.conn.commit()
+
+    # ---------- User Operations ----------
+    def create_user(self, username, password, team, region):
+        password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        sql = "INSERT INTO user (username, password_hash, team, region) VALUES (?, ?, ?, ?)"
+        self.cursor.execute(sql, (username, password_hash, team, region))
+        self.conn.commit()
+        return self.cursor.lastrowid
+
+    def authenticate_user(self, username, password):
+        sql = "SELECT * FROM user WHERE username = ?"
+        self.cursor.execute(sql, (username,))
+        user = self.cursor.fetchone()
+        if user and bcrypt.checkpw(password.encode('utf-8'), user["password_hash"].encode('utf-8')):
+            return dict(user)
+        return None
+
+    # ---------- Event Operations ----------
+    def get_all_events(self, user_id=None):
+        if user_id:
+            self.cursor.execute("SELECT * FROM event WHERE user_id=? ORDER BY activity_date DESC", (user_id,))
+        else:
+            self.cursor.execute("SELECT * FROM event ORDER BY activity_date DESC")
+        rows = self.cursor.fetchall()
+        return [dict(row) for row in rows]
+
+    def get_one_event(self, event_id):
+        sql = "SELECT * FROM event WHERE event_id = ?"
+        self.cursor.execute(sql, (event_id,))
+        row = self.cursor.fetchone()
+        return dict(row) if row else None
+
+    def add_event(self, activity, hours, notes, activity_date, user_id=None):
+        sql = """
+            INSERT INTO event (activity, hours, notes, activity_date, user_id)
+            VALUES (?, ?, ?, ?, ?)
+        """
+        self.cursor.execute(sql, (activity, hours, notes, activity_date, user_id))
+        self.conn.commit()
+        return {"event_id": self.cursor.lastrowid}
+
+    def delete_event(self, event_id):
+        sql = "DELETE FROM event WHERE event_id = ?"
+        self.cursor.execute(sql, (event_id,))
+        self.conn.commit()
+
+    def update_event(self, event_id, activity, hours, notes, activity_date):
+        sql = """
+            UPDATE event
+            SET activity = ?, hours = ?, notes = ?, activity_date = ?
+            WHERE event_id = ?
+        """
+        self.cursor.execute(sql, (activity, hours, notes, activity_date, event_id))
+        self.conn.commit()
+
+    # ---------- Reporting ----------
+    def report_total(self, month, user_id=None):
+        params = [f"{int(month):02d}"]
+        query_condition = ""
+        if user_id:
+            query_condition = "AND user_id=?"
+            params.append(user_id)
+
+        sql_monthly = f"""
+            SELECT activity, SUM(hours) AS Hours, COUNT(activity) AS Count
+            FROM event
+            WHERE strftime('%m', activity_date) = ? {query_condition}
+            GROUP BY activity
+        """
+        self.cursor.execute(sql_monthly, tuple(params))
+        monthly_results = [dict(row) for row in self.cursor.fetchall()]
+
+        sql_daily = f"""
+            SELECT * FROM event
+            WHERE strftime('%m', activity_date) = ? {query_condition}
+        """
+        self.cursor.execute(sql_daily, tuple(params))
+        daily_results = [dict(row) for row in self.cursor.fetchall()]
+
+        return monthly_results, daily_results
+
+    # ---------- Activities ----------
+    def get_all_activities(self):
+        self.cursor.execute("SELECT * FROM activity ORDER BY activity")
+        return [dict(row) for row in self.cursor.fetchall()]
+
+    def get_all_teams(self):
+        self.cursor.execute("SELECT * FROM team ORDER BY team")
+        return [dict(row) for row in self.cursor.fetchall()]
+
+    def get_all_regions(self):
+        self.cursor.execute("SELECT * FROM region ORDER BY region")
+        return [dict(row) for row in self.cursor.fetchall()]
+
+    def close(self):
+        self.cursor.close()
+        self.conn.close()

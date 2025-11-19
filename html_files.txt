@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<!-- index.html -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Time Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-light p-4">
+<div class="text-end mt-3">
+  <a href="/logout" class="text-decoration-none">Logout</a>
+</div>
+  <div class="container">
+    <h1 class="mb-4 text-center">⏱️ Time Tracker</h1>
+
+    <div class="d-flex justify-content-end mb-4">
+      <a href="/reports" class="btn btn-secondary">
+        📊 View Monthly Report
+      </a>
+    </div>
+
+    <!-- Add Event Form -->
+    <form id="eventForm" class="card p-3 mb-4 shadow-sm">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <select id="activity" name="activity" class="form-select" required>
+            <option value="">Select an activity</option>
+            {% for s in activities %}
+              <option value="{{ s.activity }}">{{ s.activity }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <input type="number" name="hours" class="form-control" placeholder="Hours" step="0.25" min="0" required>
+        </div>
+
+        <div class="col-md-3">
+          <input type="date" name="activity_date" class="form-control" required>
+        </div>
+
+        <div class="col-md-3">
+          <input type="text" name="notes" class="form-control" placeholder="Notes">
+        </div>
+
+        <div class="col-md-1">
+          <button type="submit" class="btn btn-primary w-100">Add</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Sortable table -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sortable-tablesort/sortable.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortable-tablesort/sortable.min.js"></script>
+
+    <table class="table table-striped sortable">
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Hours</th>
+          <th>Date</th>
+          <th>Notes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="eventTableBody">
+        {% for e in events %}
+        <tr data-id="{{ e.event_id }}">
+          <td>{{ e.activity }}</td>
+          <td>{{ e.hours }}</td>
+          <td data-date="{{ e.activity_date }}">{{ e.activity_date }}</td>
+          <td>{{ e.notes }}</td>
+          <td>
+            <button class="btn btn-sm btn-warning edit-btn"
+                data-id="{{ e.event_id }}"
+                data-activity="{{ e.activity }}"
+                data-hours="{{ e.hours }}"
+                data-notes="{{ e.notes }}"
+                data-date="{{ e.activity_date }}">
+              ✏️ Edit
+            </button>
+            <button class="btn btn-danger btn-sm delete-btn"
+                onclick="deleteEvent({{ e.event_id }})">
+                🗑️ Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Edit Event Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Event</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <form id="editForm">
+              <input type="hidden" id="edit-id">
+
+              <div class="mb-3">
+                <label class="form-label">Activity</label>
+                <select id="edit-activity" class="form-select" required>
+                  <option value="">Select an activity</option>
+                  {% for s in activities %}
+                    <option value="{{ s.activity }}">{{ s.activity }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Hours</label>
+                <input type="number" id="edit-hours" class="form-control" step="0.25" min="0" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" id="edit-date" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Notes</label>
+                <input type="text" id="edit-notes" class="form-control">
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">Save Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- /container -->
+
+  <script>
+    // Handle Add Event form
+    const form = document.getElementById('eventForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+      const res = await axios.post('/events', data);
+      if(res.status === 201) location.reload();
+    });
+
+    // Delete event
+    async function deleteEvent(id) {
+      if (!confirm("Delete this event?")) return;
+      await axios.delete(`/events/${id}`);
+      location.reload();
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous">
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const editModal = new bootstrap.Modal(document.getElementById("editModal"));
+      const editForm = document.getElementById("editForm");
+
+      // Open modal and prefill fields
+      document.querySelectorAll(".edit-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.getElementById("edit-id").value = btn.dataset.id;
+          document.getElementById("edit-activity").value = btn.dataset.activity;
+          document.getElementById("edit-hours").value = btn.dataset.hours;
+          document.getElementById("edit-notes").value = btn.dataset.notes;
+          document.getElementById("edit-date").value = btn.dataset.date;
+          editModal.show();
+        });
+      });
+
+      // Submit update via PUT
+      editForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const id = document.getElementById("edit-id").value;
+        const data = {
+          activity: document.getElementById("edit-activity").value,
+          hours: parseFloat(document.getElementById("edit-hours").value),
+          notes: document.getElementById("edit-notes").value,
+          activity_date: document.getElementById("edit-date").value
+        };
+
+        const res = await fetch(`/events/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          editModal.hide();
+          alert("✅ Event updated successfully!");
+          location.reload();
+        } else {
+          const err = await res.json();
+          alert("❌ Error updating event: " + err.error);
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<!-- login.html -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Time Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+  <div class="card p-4 shadow-sm" style="width: 400px;">
+    <h3 class="text-center mb-4">🔐 Login</h3>
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="/login">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" class="form-control" name="username" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+      <div class="text-center mt-3">
+        <a href="/register" class="text-decoration-none">🧾 Register New User</a>
+      </div>
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<!-- register.html -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Time Tracker</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center vh-100">
+  <div class="card p-4 shadow-sm" style="width: 420px;">
+    <h3 class="text-center mb-4">🧾 Register New User</h3>
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="/register">
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <input type="text" name="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Team</label>
+        <select name="team" class="form-select" required>
+          <option value="">Select a team</option>
+          {% for t in teams %}
+            <option value="{{ t.team }}">{{ t.team }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Region</label>
+        <select name="region" class="form-select" required>
+          <option value="">Select a region</option>
+          {% for r in regions %}
+            <option value="{{ r.region }}">{{ r.region }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+    <div class="text-center mt-3">
+      <a href="/login" class="text-decoration-none">⬅️ Back to Login</a>
+    </div>
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<!-- report.html -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Monthly Report</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light p-4">
+  <div class="container">
+    <div class="text-end mt-3">
+        <a href="/logout" class="text-decoration-none">Logout</a>
+    </div>
+    <h1 class="text-center mb-4">📊 Monthly Report</h1>
+
+    <div class="d-flex justify-content-between mb-3">
+
+      <form id="monthForm" class="d-flex align-items-center gap-3">
+        <label for="month" class="form-label m-0">Select Month:</label>
+        <input type="month" id="month" name="month" class="form-control" style="max-width: 200px;" required>
+        <button type="submit" class="btn btn-primary">View Report</button>
+      </form>
+        <a href="/" class="btn btn-secondary">⬅️ Back to Home</a>
+    </div>
+
+    <!-- Summary Table -->
+    <h4>Summary</h4>
+    <table class="table table-bordered mb-5">
+      <thead class="table-light">
+        <tr>
+          <th>Activity</th>
+          <th>Total Hours</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% set ns = namespace(total_hours=0, total_count=0) %}
+        {% for r in monthly %}
+          <tr>
+            <td>{{ r.activity }}</td>
+            <td>{{ "%.2f"|format(r.Hours or 0) }}</td>
+            <td>{{ r.Count or 0 }}</td>
+          </tr>
+          {% set ns.total_hours = ns.total_hours + (r.Hours|float) %}
+          {% set ns.total_count = ns.total_count + (r.Count|int) %}
+        {% endfor %}
+      </tbody>
+      <tfoot class="table-secondary">
+        <tr>
+          <th>Grand Total</th>
+          <th>{{ "%.2f"|format(ns.total_hours) }}</th>
+          <th>{{ ns.total_count }}</th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Chart Section -->
+    <div class="card mb-5 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title text-center mb-3">Hours per Activity</h5>
+        <canvas id="hoursChart" height="100"></canvas>
+      </div>
+    </div>
+
+    <!-- Daily Entries -->
+    <h4>Daily Entries</h4>
+    <table class="table table-striped">
+      <thead class="table-light">
+        <tr>
+          <th>Activity</th>
+          <th>Hours</th>
+          <th>Date</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in daily %}
+        <tr>
+          <td>{{ d.activity }}</td>
+          <td>{{ "%.2f"|format(d.hours or 0) }}</td>
+          <td>{{ d.activity_date }}</td>
+          <td>{{ d.notes }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    // Prepare data from Jinja variables
+    const activities = {{ monthly | map(attribute='activity') | list | tojson }};
+    const hours = {{ monthly | map(attribute='Hours') | list | tojson }};
+
+    // Create chart
+    const ctx = document.getElementById('hoursChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: activities,
+        datasets: [{
+          label: 'Total Hours',
+          data: hours,
+          borderWidth: 1,
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Hours'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Activity'
+            },
+            ticks: {
+              autoSkip: false,
+              maxRotation: 60,
+              minRotation: 45
+            }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: 'Total Hours per Activity'
+          }
+        }
+      }
+    });
+  </script>
+
+  <script>
+    // Handle month selection form
+    document.getElementById('monthForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const monthValue = document.getElementById('month').value;
+      if (monthValue) {
+        const selectedMonth = parseInt(monthValue.split('-')[1]); // extract month number
+        window.location.href = `/reports/${selectedMonth}`;
+      }
+    });
+
+    // Auto-fill current month
+    document.addEventListener('DOMContentLoaded', () => {
+      const monthInput = document.getElementById('month');
+      const today = new Date();
+      const currentMonth = today.toISOString().slice(0, 7); // YYYY-MM
+      monthInput.value = currentMonth;
+    });
+  </script>
+</body>
+</html>
