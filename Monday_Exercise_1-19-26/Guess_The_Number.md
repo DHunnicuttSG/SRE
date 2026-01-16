@@ -26,3 +26,6 @@ You should include a Service layer to manage the game rules, such as generating 
 
 ### Additional Notes
 Use Postman or similar (Thunder Client in vs code) to verify your endpoints behave the way you expect them to be.
+
+### Challenge
+Write this app using MVC architecture. 
