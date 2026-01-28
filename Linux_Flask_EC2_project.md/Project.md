@@ -348,7 +348,7 @@ sudo systemctl daemon-reload
 
 # 🧩 **Part 12 — Demonstration Requirements**
 
-On successful completion of the project, each student will be able to show:
+To successfully complete the project, each student must show:
 
 ✔ They can launch an EC2 instance  
 ✔ They can SSH using a key pair  
@@ -359,5 +359,5 @@ On successful completion of the project, each student will be able to show:
 ✔ The app works in a browser
 
 **Challenge** 
-* Add a database and a table with 3 records.
+* Add a database and a table with 3 records. 
 * Update your Python app to retrieve the data to the browser
