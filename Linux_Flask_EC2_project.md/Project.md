@@ -348,7 +348,7 @@ sudo systemctl daemon-reload
 
 # 🧩 **Part 12 — Demonstration Requirements**
 
-To successfully complete the project, each student must show:
+On successful completion of the project, each student will be able to show:
 
 ✔ They can launch an EC2 instance  
 ✔ They can SSH using a key pair  
