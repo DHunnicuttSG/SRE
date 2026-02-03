@@ -87,7 +87,7 @@ ssh -i ~/Downloads/todo-key.pem ubuntu@YOUR_PUBLIC_IP
 1.  **Update packages**
 
 ```bash
-sudo apt-get update -y && sudo apt-get upgrade -y
+sudo dnf update -y && sudo dnf upgrade -y
 ```
 
 *   **Why:** Ensures latest security fixes and package lists.
@@ -95,7 +95,7 @@ sudo apt-get update -y && sudo apt-get upgrade -y
 2.  **Install Docker**
 
 ```bash
-sudo apt-get install -y docker.io
+sudo dnf install -y docker
 ```
 
 *   **Verify:**
@@ -133,9 +133,26 @@ docker compose version
 If that fails:
 
 ```bash
-sudo apt-get install -y docker-compose
+sudo dnf install -y docker-compose
 docker-compose --version
 ```
+
+Could also try this:
+* copy exactly, the -o is for file output
+
+```bash
+sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
+  -o /usr/local/bin/docker-compose
+```
+If you get 'permission denied' then go to the file and change permissions
+
+```bash
+cd /usr/local/bin
+sudo chmod +x docker-compose
+docker-compose --version
+```
+
+
 
 **Troubleshooting**
 
