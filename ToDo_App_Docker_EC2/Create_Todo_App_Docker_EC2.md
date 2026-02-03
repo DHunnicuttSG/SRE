@@ -34,7 +34,7 @@
 2.  **Launch Instance**
     *   Click **Launch instance**.
     *   **Name:** `todo-ec2`
-    *   **Application and OS Images (AMI):** Choose **Ubuntu Server 22.04 LTS** (free tier eligible).
+    *   **Application and OS Images (AMI):** Choose **Amazon Linux** (free tier eligible).
     *   **Instance type:** `t2.micro` or `t3.micro` (Free Tier).
     *   **Key pair (login):**
         *   Click **Create new key pair** → Name: `todo-key` → Type: **RSA** → Format: **.pem** → **Create key pair**.
@@ -351,11 +351,11 @@ We’ll test via Compose in Phase 9.
 cd ~/todo-app/frontend
 
 # Install Node & npm if missing (Ubuntu)
-sudo apt-get install -y nodejs npm
+sudo dnf install -y nodejs npm
 node -v && npm -v  # verify versions
 
-# Create React skeleton (without interactive prompts)
-npx create-react-app . --use-npm
+# Create React skeleton 
+npm create vite@latest . -- --template react
 ```
 
 **Expected output:** A lot of files created, ending with:
@@ -367,7 +367,7 @@ npx create-react-app . --use-npm
 **src/App.js**
 
 ```bash
-cat > src/App.js << 'EOF'
+cat > src/App.jsx << 'EOF'
 import React, { useEffect, useState } from 'react';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
