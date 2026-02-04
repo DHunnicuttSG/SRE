@@ -1,3 +1,4 @@
+Awesome, David — let’s get your very first **full‑stack Todo List app** deployed on AWS EC2 using **Docker**. I’ll guide you step‑by‑step, from creating an AWS account to seeing your app live in a browser. We’ll use:
 
 *   **Backend:** Python + **FastAPI** (simple, fast, great docs)
 *   **Frontend:** **React**
@@ -34,7 +35,7 @@
 2.  **Launch Instance**
     *   Click **Launch instance**.
     *   **Name:** `todo-ec2`
-    *   **Application and OS Images (AMI):** Choose **Amazon Linux** (free tier eligible).
+    *   **Application and OS Images (AMI):** Choose **Ubuntu Server 22.04 LTS** (free tier eligible).
     *   **Instance type:** `t2.micro` or `t3.micro` (Free Tier).
     *   **Key pair (login):**
         *   Click **Create new key pair** → Name: `todo-key` → Type: **RSA** → Format: **.pem** → **Create key pair**.
@@ -87,7 +88,7 @@ ssh -i ~/Downloads/todo-key.pem ubuntu@YOUR_PUBLIC_IP
 1.  **Update packages**
 
 ```bash
-sudo dnf update -y && sudo dnf upgrade -y
+sudo apt-get update -y && sudo apt-get upgrade -y
 ```
 
 *   **Why:** Ensures latest security fixes and package lists.
@@ -95,7 +96,7 @@ sudo dnf update -y && sudo dnf upgrade -y
 2.  **Install Docker**
 
 ```bash
-sudo dnf install -y docker
+sudo apt-get install -y docker.io
 ```
 
 *   **Verify:**
@@ -133,26 +134,9 @@ docker compose version
 If that fails:
 
 ```bash
-sudo dnf install -y docker-compose
+sudo apt-get install -y docker-compose
 docker-compose --version
 ```
-
-Could also try this:
-* copy exactly, the -o is for file output
-
-```bash
-sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 \
-  -o /usr/local/bin/docker-compose
-```
-If you get 'permission denied' then go to the file and change permissions
-
-```bash
-cd /usr/local/bin
-sudo chmod +x docker-compose
-docker-compose --version
-```
-
-
 
 **Troubleshooting**
 
@@ -351,11 +335,12 @@ We’ll test via Compose in Phase 9.
 cd ~/todo-app/frontend
 
 # Install Node & npm if missing (Ubuntu)
-sudo dnf install -y nodejs npm
+sudo apt-get install -y nodejs npm
 node -v && npm -v  # verify versions
 
-# Create React skeleton 
-npm create vite@latest . -- --template react
+# Create React skeleton (without interactive prompts)
+npm create vite@latest . 
+
 ```
 
 **Expected output:** A lot of files created, ending with:
@@ -367,7 +352,7 @@ npm create vite@latest . -- --template react
 **src/App.js**
 
 ```bash
-cat > src/App.jsx << 'EOF'
+cat > src/App.js << 'EOF'
 import React, { useEffect, useState } from 'react';
 
 const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:8000';
@@ -491,9 +476,10 @@ EOF
 ```
 
 **public/index.html**
+* index.html is NOT in public folder
 
 ```bash
-cat > public/index.html << 'EOF'
+cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -600,7 +586,7 @@ EOF
 
 ```bash
 cd ~/todo-app
-docker compose build
+docker-compose build
 ```
 
 *   **Expected:** Logs ending with `Successfully built` for both services.
@@ -810,3 +796,11 @@ docker compose build backend
 docker compose build frontend
 docker compose up -d
 ```
+
+***
+
+## Want me to automate this?
+
+Once you’re comfortable, I can generate a **single setup script** that installs dependencies, writes all files, and runs everything with one command. I can also help you add HTTPS with a free certificate, or migrate to a managed DB.
+
+How far did you get, and where would you like me to jump in next (e.g., debugging a specific error, adding user authentication, or deploying behind Nginx with TLS)?
