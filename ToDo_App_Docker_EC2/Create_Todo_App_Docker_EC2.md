@@ -311,6 +311,13 @@ EXPOSE 8000
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 EOF
 ```
+```bash
+# to test backend reroute port 8000 to 80 by running this command
+
+docker run -p 80:8000 your-image-name
+
+```
+
 
 **What each line does:**
 
@@ -330,6 +337,22 @@ We’ll test via Compose in Phase 9.
 ## Phase 7 — Build the Frontend (React)
 
 ### 7.1 Initialize React app
+
+
+We need to be sure to install version 20+
+
+Use these commands if there is an issue:
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+source ~/.bashrc
+
+nvm install 20
+
+# check version with: 
+node version or node -v
+
+```
 
 ```bash
 cd ~/todo-app/frontend
@@ -500,7 +523,7 @@ EOF
 ```bash
 cat > Dockerfile << 'EOF'
 # 1) Build stage: build static files with Node
-FROM node:18-alpine AS build
+FROM node:22 AS build
 
 # 2) Set working directory
 WORKDIR /app
@@ -518,7 +541,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # 6) Copy build artifacts to Nginx html directory
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # 7) Expose port 80 for HTTP
 EXPOSE 80
