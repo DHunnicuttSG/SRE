@@ -485,7 +485,7 @@ export default App;
 EOF
 ```
 
-**src/index.js**
+<!-- **src/index.js**
 
 ```bash
 cat > src/index.js << 'EOF'
@@ -496,7 +496,7 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 EOF
-```
+``` -->
 
 **public/index.html**
 * index.html is NOT in public folder
