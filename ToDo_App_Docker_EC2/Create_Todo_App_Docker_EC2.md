@@ -221,9 +221,13 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(title="Todo API", version="1.0")
 
 # CORS: allow frontend (React) to call backend from a different port
+
+origins = ["http://localhost:8000","http://127.0.0.1:8000"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For learning; in production, set to your domain/origin
+    allow_origins=origins,  # use for production
+    # allow_origins=["*"],  # For learning; in production, set to your domain/origin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
