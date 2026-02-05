@@ -513,6 +513,7 @@ cat > index.html << 'EOF'
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
 EOF
