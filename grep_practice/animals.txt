@@ -1,0 +1,5 @@
+The cat sat on the mat.
+Concatenate strings carefully.
+Category theory is abstract.
+A bobcat is a wild cat.
+Caterpillar populations increased.

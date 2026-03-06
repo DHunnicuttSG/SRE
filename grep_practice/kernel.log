@@ -1,0 +1,5 @@
+[    0.000000] Booting Linux Kernel 6.9.0
+[    1.000000] critical: thermal zone overheat
+[    1.500000] info: enabling swap
+[    2.000000] CRITICAL: GPU voltage drop
+[    3.000000] warning: clock skew detected

@@ -1,0 +1,11 @@
+INFO 2025-09-12 08:10:01 Starting service
+DEBUG 2025-09-12 08:10:02 Loaded config profile=default
+ERROR 2025-09-12 08:10:03 Connection failed for user alice
+WARN 2025-09-12 08:10:04 Retrying in 5 seconds
+ERROR 2025-09-12 08:10:09 Timeout while contacting api.example.com
+DEBUG 2025-09-12 08:10:10 Backoff set to 1000ms
+INFO 2025-09-12 08:10:12 Service ready
+ERROR 2025-09-12 08:11:01 Disk space low: 5% remaining
+CRITICAL 2025-09-12 08:11:05 System overheating
+ERROR 2025-09-12 08:11:06 DEBUG flag accidentally enabled
+ERROR 2025-09-12 08:12:00 User bob encountered error code E123

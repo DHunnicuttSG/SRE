@@ -1,0 +1,5 @@
+Line one: passed
+Line two: failed due to timeout
+Line three: FAILED unit test "alpha"
+Line four: inconclusive
+Line five: failed network check

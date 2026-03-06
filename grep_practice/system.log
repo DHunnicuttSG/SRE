@@ -1,0 +1,9 @@
+System boot at 2025-01-01 00:00:00
+warning: deprecated kernel parameter in cmdline
+WARNING: fan speed controller unavailable
+Error: failed to mount /dev/sda1
+error: fsck required on /dev/sda1
+FAIL: service network.target
+Success: applied udev rules
+success: updated initramfs
+Error: failed to mount /dev/sda1

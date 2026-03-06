@@ -1,0 +1,3 @@
+This is a random note.
+It mentions a critical issue in passing.
+But not too much detail.
