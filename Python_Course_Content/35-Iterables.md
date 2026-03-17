@@ -89,6 +89,24 @@ for n, l in zip(numbers, letters):
 20 b
 30 c
 ```
+---
+
+### unzip example
+```python
+
+names = ["Alice", "Bob", "Charlie"]
+scores = [95, 88, 72]
+letters = ['A', 'B', 'C']
+
+zipped = list(zip(names, scores, letters))
+print(zipped)
+
+unz_names, unz_scores, unz_letters = zip(*zipped) # '*' splat operator
+
+print(unz_names)
+print(unz_scores)
+print(unz_letters)
+```
 
 ---
 
