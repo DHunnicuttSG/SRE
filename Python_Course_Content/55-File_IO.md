@@ -29,7 +29,18 @@ Files allow programs to **store data permanently**, beyond the end of execution.
 # 3. 🔧 The `open()` Function
 
 ```python
-file = open("filename.txt", "mode")
+# file = open("filename.txt", "mode")
+
+# Open a file in write mode ("w")
+# If the file doesn't exist, Python will create it automatically.
+file = open("example.txt", "w")
+
+# Write text to the file
+file.write("Hello, world!")
+
+# Always close the file when you're done
+file.close()
+
 ```
 
 ### Common File Modes
