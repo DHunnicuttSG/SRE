@@ -125,11 +125,16 @@ def home():
 def add(oper1, oper2):
     return f"{oper1} + {oper2} = {oper1 + oper2}"
 
-@app.route("/celcius/<float:c>")
+@app.route("/c/<float:c>")
 def c_to_f(c):
     f = (c * 9/5) + 32
     return f"<h3>{c} degrees Celcius = {f:.2f} degrees Fahrenheit</h3>"
     
+@app.route("/f/<float:f>")
+def f_to_c(f):
+    c = (f - 32) * 5/9
+    return f"<h3>{f} degrees Fahrenheit = {c:.2f} degrees Celcius</h3>"
+
 if __name__ == "__main__":
     # IMPORTANT: Bind to 0.0.0.0 so it is reachable externally
     app.run(host="0.0.0.0", port=8000)
