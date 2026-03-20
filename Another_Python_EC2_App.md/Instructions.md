@@ -121,6 +121,15 @@ app = Flask(__name__)
 def home():
     return "Hello from your EC2 server! ✅"
 
+@app.route("/add/<int:oper1>/<int:oper2>")
+def add(oper1, oper2):
+    return f"{oper1} + {oper2} = {oper1 + oper2}"
+
+@app.route("/celcius/<float:c>")
+def c_to_f(c):
+    f = (c * 9/5) + 32
+    return f"<h3>{c} degrees Celcius = {f:.2f} degrees Fahrenheit</h3>"
+    
 if __name__ == "__main__":
     # IMPORTANT: Bind to 0.0.0.0 so it is reachable externally
     app.run(host="0.0.0.0", port=8000)
