@@ -22,6 +22,8 @@ The final project will consist of three parts.  Part one will be to create a ful
 * Create a PowerPoint presentation no more than 10 minutes in length
 * Include slides for introduction of team, topic, goal, management of project and lessons learned.
 
+## Deliverables 
+* submit a zip file to the teams channel of all your files OR a link to the repo with your files. 
 
 
 
