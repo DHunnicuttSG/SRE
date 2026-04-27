@@ -1,7 +1,7 @@
 
 from flask import Blueprint, request, jsonify
-from service.game_service import GameService
-from view.json_view import game_to_dict, games_to_list, rounds_to_list
+from Python_Apps.GTN_MVC_Example.service.game_service import GameService
+from Python_Apps.GTN_MVC_Example.view.json_view import game_to_dict, games_to_list, rounds_to_list
 
 bp = Blueprint("game", __name__)
 svc = GameService()

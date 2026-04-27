@@ -1,7 +1,7 @@
 
 from flask import Flask
-from config import Config
-from controller.game_controller import bp as game_bp
+from Python_Apps.GTN_MVC_Example.config import Config
+from Python_Apps.GTN_MVC_Example.controller.game_controller import bp as game_bp
 
 def create_app() -> Flask:
     app = Flask(__name__)

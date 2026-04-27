@@ -3,9 +3,9 @@ from __future__ import annotations
 from typing import Optional, List
 import mysql.connector
 from mysql.connector import pooling
-from model.game import Game
-from model.round import Round
-from config import Config
+from Python_Apps.GTN_MVC_Example.model.game import Game
+from Python_Apps.GTN_MVC_Example.model.round import Round
+from Python_Apps.GTN_MVC_Example.config import Config
 
 class GameRepository:
     def __init__(self, pool_name: str = "gtn_pool", pool_size: int = 5) -> None:

@@ -2,9 +2,9 @@
 from __future__ import annotations
 from typing import List, Tuple, Optional
 import random
-from repository.game_repository import GameRepository
-from model.game import Game
-from model.round import Round
+from Python_Apps.GTN_MVC_Example.repository.game_repository import GameRepository
+from Python_Apps.GTN_MVC_Example.model.game import Game
+from Python_Apps.GTN_MVC_Example.model.round import Round
 
 class GameService:
     def __init__(self, repo: GameRepository | None = None) -> None:

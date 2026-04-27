@@ -1,5 +1,5 @@
-from model.game import Game
-from model.round import Round
+from Python_Apps.GTN_MVC_Example.model.game import Game
+from Python_Apps.GTN_MVC_Example.model.round import Round
 
 def game_to_dict(g: Game) -> dict:
     # Keep your original response key style (camelCase)
