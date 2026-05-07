@@ -79,5 +79,3 @@ alias ll='ls -alF --color=auto'
 ```
 
 ***
-
-If you want, I can show you how to create more advanced shortcuts (functions, scripts, etc.) beyond simple aliases.
