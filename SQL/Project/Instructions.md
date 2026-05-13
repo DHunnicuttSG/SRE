@@ -143,5 +143,5 @@ Create a SQL script that includes queries to retrieve the following data from th
 6.	Write a query that returns a list of all guest names and the number of reservations per guest, sorted starting with the guest with the most reservations and then by the guest's last name.
 7.	Write a query that displays the name, address, and phone number of a guest based on their phone number. (Choose a phone number from the existing data.)
 
-** Part 5: submission**
+**Part 5: Submission**
 1. Submit one *.sql file with the schema, data inserts and queries. You can send the file or a link in teams. 
