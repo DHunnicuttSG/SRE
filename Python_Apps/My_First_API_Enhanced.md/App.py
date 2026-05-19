@@ -1,15 +1,3 @@
-'''
-Docstring for Monday_Exercise_1-19-26.App
-
-Here is the example for the App.py demo I was doing before my Internet died.  
-I believe my Internet just came back on a few minutes ago.
-Pay attention to the comments on the POST method function and the Get by Id function
-There are two big possible errors that could occur.  
-I did not have opportunity to explain the Guess the Number app. 
-I will give you more time for that on on Tuesday if needed.
-Good luck, have fun and see you Tuesday
-'''
-
 from flask import Flask, jsonify, request, Response
 import mysql.connector
 import json
