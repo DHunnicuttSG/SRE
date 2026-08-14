@@ -1,4 +1,4 @@
-# Understanding Inodes, Hard Links, and Soft Links (Like You're a Kid)
+# Understanding Inodes, Hard Links, and Soft Links
 
 Let's imagine your computer's hard drive is a giant library.
 
