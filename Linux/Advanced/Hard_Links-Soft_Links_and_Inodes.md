@@ -93,7 +93,7 @@ cats.txt ---> inode #123 ---> data
 Now create a hard link called:
 
 ```text
-kitties.txt
+kittens.txt
 ```
 
 The result:
@@ -103,7 +103,7 @@ cats.txt -----\
                \
                 ---> inode #123 ---> data
                /
-kitties.txt ---/
+kittens.txt ---/
 ```
 
 Notice:
@@ -130,7 +130,7 @@ Since both names point to the same inode:
 
 ```text
 cats.txt
-kitties.txt
+kittens.txt
 ```
 
 both show the updated content.
@@ -152,7 +152,7 @@ cats.txt -----\
                \
                 ---> inode #123
                /
-kitties.txt ---/
+kittens.txt ---/
 ```
 
 Now delete:
@@ -164,7 +164,7 @@ cats.txt
 Result:
 
 ```text
-kitties.txt ---> inode #123
+kittens.txt ---> inode #123
 ```
 
 The data stays!
@@ -185,7 +185,7 @@ Example:
 
 ```text
 cats.txt ---> inode #123
-kitties.txt ---> inode #123
+kittens.txt ---> inode #123
 ```
 
 Delete both:
@@ -467,7 +467,7 @@ echo "Cats are awesome" > cats.txt
 Create a hard link:
 
 ```bash
-ln cats.txt kitties.txt
+ln cats.txt kittens.txt
 ```
 
 Create a soft link:
@@ -486,13 +486,13 @@ Example output:
 
 ```text
 12345 cats.txt
-12345 kitties.txt
+12345 kittens.txt
 67890 mycats -> cats.txt
 ```
 
 Notice:
 
-- `cats.txt` and `kitties.txt` share inode `12345`
+- `cats.txt` and `kittens.txt` share inode `12345`
 - `mycats` has its own inode because it only stores a path to `cats.txt`
 
 ---
@@ -514,7 +514,7 @@ cats.txt -----\
                \
                 ---> inode #123 ---> data
                /
-kitties.txt ---/
+kittens.txt ---/
 
 
 SOFT LINK
