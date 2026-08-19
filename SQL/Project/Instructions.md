@@ -145,3 +145,11 @@ Create a SQL script that includes queries to retrieve the following data from th
 
 **Part 5: Submission**
 1. Submit one *.sql file with the schema, data inserts and queries. You can send the file or a link in teams. 
+
+---
+
+### Added Challenge 
+1.  Create a triggers in your database to audit the inserts, deletes and updates for customers and reservations.  
+2.  Create a trigger to calculate the total room cost for the guest's stay.  
+3.  Create a procedure showing the current guests for a date.  
+4.  Create a view showing the amenities in each room.  
