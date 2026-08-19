@@ -149,7 +149,7 @@ Create a SQL script that includes queries to retrieve the following data from th
 ---
 
 ### Added Challenge 
-1.  Create a triggers in your database to audit the inserts, deletes and updates for customers and reservations.  
+1.  Create triggers in your database to audit the inserts, deletes and updates for customers and reservations.  
 2.  Create a trigger to calculate the total room cost for the guest's stay.  
 3.  Create a procedure showing the current guests for a date.  
 4.  Create a view showing the amenities in each room.  
