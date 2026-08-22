@@ -1,19 +1,25 @@
 # Project Overview
 
-The final project will consist of three parts.  Part one will be to create a full-stack application using python. The second part will be to deploy the application using an automated process. This can be anything from Docker to Terraform. Your project, your decision. As part of the deployment you will also need to create some monitoring of your application using Grafana or another monitoring tool. Part three will be a 10-15 minute presentation on your app and your process.  
+
+The final project will consist of three parts.  Part one will be to create a full-stack application using python. The second part will be to deploy the application using an automated process. This can be anything from Docker to Terraform. Your project, your decision. As part of the deployment you will also need to create some monitoring of your application using Grafana or another monitoring tool. Part three will be a 10-15 minute presentation on your app and your process. 
 
 ## Part one
-* The application can be almost anything you want.  Business apps are preferred.  If you want to do some sort of game, that is accecptable too.  (Be careful, sometimes games are more difficult.) 
-* The app should be structured to use MVC and be an API application
-* The backend should be written in python. 
-* Don't forget to include unit testing in your app. Test relevant functions.
-* The database is flexible,  you can use mySQL, sqlite, or any other relational database. 
-    - DO NOT USE a non-relational database like Mongo.  
-
-* The application should be able to perform all CRUD operations  
-    - Create, Read all, Read one, Update, and Delete.  
-* The frontend can be written using any language you like, React, Angular, JS, Flask/Django templates are fine too.
+For part one of the project you will build a python app. The requirements for the app are as follows:
+* The application can be almost anything you want.  Business apps are preferred.  If you want to do some sort of game, that is accecptable too.  (Be careful, sometimes games are more difficult.) The course is NOT about the app, but the processes behind it. 
+* Must have a login feature. (users and admins)
+* Must use an API
+* App must include unit testing 
+* App must be built to an MVC structure
+* App must use a relational database (No Mongo Db or similar)
+* App must have ability to do ALL CRUD (Create, Read, Update, Delete) functions 
+* Database must include an audit table
+* The frontend can be written using any language you like, React, Angular, JS, Flask/Django, vanilla JS,  templates are fine too.
 * The frontend should be clean, well designed, user-friendly, and functional. (It does not need to be perfect but it should be functional)
+* App shold have monitoring/observability features.  Use Grafana or something similar
+    - create a dashboard with your monitoring software to monitor the app and add at least 1 alarm
+* App should be deployed on any cloud based system
+
+
 
 ## Part two
 * Create an automation process to deploy your application.  
@@ -21,17 +27,16 @@ The final project will consist of three parts.  Part one will be to create a ful
 * You can use **ANY** deployment means at your disposal. 
 * I encourage you to explore different options such as, Docker, Github, Heroku, AWS CodeDeploy, Terraform, etc.
 * Your deployment should run with as few commands as possible.
-* You will need to also deploy a monitoring system for your app.  I encourage you to use Grafana.  
-    - The monitoring should have at least one dashboard and one alert. If you would like to do more, your decision. 
-    - The Grafana labs should help with creating a dashboard and an alert for something "out of bounds".
+* This part is a bit flexible.  I have had teams in the past unable to deploy.  This is NOT a deal-breaker. bottom line, is that the app should run and function correctly with monitoring. If this is local to a team members computer then it is fine. 
 
 ## Part three
 * Create a PowerPoint presentation no more than 10 minutes in length include 1 slide for each:  
-* Introduction of team  
-* Topic/goal of the project (this is the why you are building the app)  
-* Management of project(who did what) 
+* Team Intro  
+* What we built. What problem does it solve?
+* What did we use to build the app
+* Who worked on what
 * Lessons learned
-* Questions
+* Questions/Answers
 
 ## Deliverables 
 * Submit a zip file to the teams channel of all your files OR a link to the repo with your files. 
