@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Manager</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 40px;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+    button {
+        padding: 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+        cursor: pointer;
+    }
+
+    .contacts-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .contacts-table th,
+    .contacts-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    .contacts-table th {
+        background-color: #0078d4;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .action-btn {
+        margin-right: 5px;
+    }
+
+    #status {
+        margin-top: 10px;
+        color: green;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<h1>Contact Manager</h1>
+
+<div class="container">
+
+    <div class="card">
+
+        <h2>Contact Details</h2>
+
+        <input type="number" id="contactId" placeholder="Contact ID">
+
+        <input type="text" id="firstName" placeholder="First Name">
+
+        <input type="text" id="lastName" placeholder="Last Name">
+
+        <input type="text" id="company" placeholder="Company">
+
+        <input type="text" id="phone" placeholder="Phone">
+
+        <input type="email" id="email" placeholder="Email">
+
+        <button onclick="createContact()">Create</button>
+        <button onclick="updateContact()">Update</button>
+        <button onclick="clearForm()">Clear</button>
+
+        <div id="status"></div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>Contacts</h2>
+
+        <button onclick="loadContacts()">Refresh Contacts</button>
+
+        <table class="contacts-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Company</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contactsBody"></tbody>
+        </table>
+
+    </div>
+
+</div>
+
+<script>
+
+const API_URL =
+    "http://contactlist.us-east-1.elasticbeanstalk.com/contact";
+
+function showStatus(message, isError = false) {
+    const status = document.getElementById("status");
+    status.style.color = isError ? "red" : "green";
+    status.textContent = message;
+}
+
+function getFormData() {
+    return {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        company: document.getElementById("company").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value
+    };
+}
+
+function populateForm(contact) {
+
+    document.getElementById("contactId").value =
+        contact.contactId || "";
+
+    document.getElementById("firstName").value =
+        contact.firstName || "";
+
+    document.getElementById("lastName").value =
+        contact.lastName || "";
+
+    document.getElementById("company").value =
+        contact.company || "";
+
+    document.getElementById("phone").value =
+        contact.phone || "";
+
+    document.getElementById("email").value =
+        contact.email || "";
+}
+
+function clearForm() {
+
+    document.getElementById("contactId").value = "";
+    document.getElementById("firstName").value = "";
+    document.getElementById("lastName").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("email").value = "";
+
+    showStatus("");
+}
+
+async function loadContacts() {
+
+    try {
+
+        const response = await fetch(API_URL+'s');
+
+        const contacts = await response.json();
+
+        const tbody = document.getElementById("contactsBody");
+
+        tbody.innerHTML = "";
+
+        contacts.forEach(contact => {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>${contact.contactId}</td>
+                <td>${contact.firstName}</td>
+                <td>${contact.lastName}</td>
+                <td>${contact.company}</td>
+                <td>${contact.phone}</td>
+                <td>${contact.email}</td>
+                <td>
+                    <button class="action-btn"
+                        onclick="editContact(${contact.contactId})">
+                        Edit
+                    </button>
+
+                    <button class="action-btn"
+                        onclick="deleteContact(${contact.contactId})">
+                        Delete
+                    </button>
+                </td>
+            `;
+
+            tbody.appendChild(row);
+        });
+
+    } catch (error) {
+        showStatus(error.message, true);
+    }
+}
+
+async function editContact(contactId) {
+
+    try {
+
+        const response =
+            await fetch(`${API_URL}/${contactId}`);
+
+        const contact = await response.json();
+
+        populateForm(contact);
+
+    } catch (error) {
+        showStatus(error.message, true);
+    }
+}
+
+async function createContact() {
+
+    try {
+
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(getFormData())
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to create contact");
+        }
+
+        showStatus("Contact created successfully");
+
+        loadContacts();
+
+        clearForm();
+
+    } catch (error) {
+        showStatus(error.message, true);
+    }
+}
+
+async function updateContact() {
+
+    try {
+
+        const id =
+            document.getElementById("contactId").value;
+
+        if (!id) {
+            alert("Select a contact first.");
+            return;
+        }
+
+        const response = await fetch(
+            `${API_URL}/${id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(getFormData())
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to update contact");
+        }
+
+        showStatus("Contact updated successfully");
+
+        loadContacts();
+
+    } catch (error) {
+        showStatus(error.message, true);
+    }
+}
+
+async function deleteContact(contactId) {
+
+    if (!confirm("Delete this contact?")) {
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(`${API_URL}/${contactId}`, {
+                method: "DELETE"
+            });
+
+        if (!response.ok) {
+            throw new Error("Failed to delete contact");
+        }
+
+        showStatus("Contact deleted successfully");
+
+        loadContacts();
+
+        clearForm();
+
+    } catch (error) {
+        showStatus(error.message, true);
+    }
+}
+
+loadContacts();
+
+</script>
+
+</body>
+</html>

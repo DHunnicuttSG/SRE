@@ -1,0 +1,320 @@
+2026-08-24 08:00:00 [ERROR] UserProfile - Message queue publish failed
+2026-08-24 08:00:17 [DEBUG] UserProfile - Entering method ProcessRequest
+2026-08-24 08:00:34 [WARN] Scheduler - Slow response detected
+2026-08-24 08:00:51 [WARN] InventoryService - Retry attempt initiated
+2026-08-24 08:01:08 [DEBUG] Scheduler - Token validation started
+2026-08-24 08:01:25 [DEBUG] AuthService - Query execution metrics collected
+2026-08-24 08:01:42 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 08:01:59 [INFO] UserProfile - Job completed
+2026-08-24 08:02:16 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:02:33 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 08:02:50 [INFO] AuthService - User authenticated
+2026-08-24 08:03:07 [DEBUG] UserProfile - Token validation started
+2026-08-24 08:03:24 [INFO] UserProfile - Cache refreshed
+2026-08-24 08:03:41 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:03:58 [DEBUG] ApiGateway - Query execution metrics collected
+2026-08-24 08:04:15 [WARN] Scheduler - Memory usage above threshold
+2026-08-24 08:04:32 [WARN] Scheduler - Slow response detected
+2026-08-24 08:04:49 [INFO] Scheduler - User authenticated
+2026-08-24 08:05:06 [WARN] PaymentService - Retry attempt initiated
+2026-08-24 08:05:23 [WARN] InventoryService - Slow response detected
+2026-08-24 08:05:40 [INFO] InventoryService - Job completed
+2026-08-24 08:05:57 [DEBUG] AuthService - Loaded configuration settings
+2026-08-24 08:06:14 [DEBUG] CacheManager - Token validation started
+2026-08-24 08:06:31 [INFO] InventoryService - Job completed
+2026-08-24 08:06:48 [INFO] InventoryService - User authenticated
+2026-08-24 08:07:05 [WARN] InventoryService - Retry attempt initiated
+2026-08-24 08:07:22 [DEBUG] UserProfile - Query execution metrics collected
+2026-08-24 08:07:39 [INFO] Scheduler - Heartbeat received
+2026-08-24 08:07:56 [INFO] UserProfile - Request processed successfully
+2026-08-24 08:08:13 [INFO] Scheduler - Job completed
+2026-08-24 08:08:30 [WARN] AuthService - Memory usage above threshold
+2026-08-24 08:08:47 [DEBUG] PaymentService - Loaded configuration settings
+2026-08-24 08:09:04 [DEBUG] ApiGateway - Token validation started
+2026-08-24 08:09:21 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 08:09:38 [WARN] UserProfile - Retry attempt initiated
+2026-08-24 08:09:55 [DEBUG] ApiGateway - Query execution metrics collected
+2026-08-24 08:10:12 [DEBUG] InventoryService - Entering method ProcessRequest
+2026-08-24 08:10:29 [ERROR] PaymentService - Message queue publish failed
+2026-08-24 08:10:46 [DEBUG] UserProfile - Query execution metrics collected
+2026-08-24 08:11:03 [DEBUG] AuthService - Query execution metrics collected
+2026-08-24 08:11:20 [INFO] ApiGateway - Cache refreshed
+2026-08-24 08:11:37 [INFO] Scheduler - Cache refreshed
+2026-08-24 08:11:54 [INFO] PaymentService - Cache refreshed
+2026-08-24 08:12:11 [WARN] UserProfile - Memory usage above threshold
+2026-08-24 08:12:28 [WARN] InventoryService - Slow response detected
+2026-08-24 08:12:45 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 08:13:02 [INFO] CacheManager - Cache refreshed
+2026-08-24 08:13:19 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:13:36 [WARN] ApiGateway - Slow response detected
+2026-08-24 08:13:53 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:14:10 [DEBUG] InventoryService - Entering method ProcessRequest
+2026-08-24 08:14:27 [DEBUG] AuthService - Entering method ProcessRequest
+2026-08-24 08:14:44 [WARN] UserProfile - Retry attempt initiated
+2026-08-24 08:15:01 [ERROR] InventoryService - Failed to connect to Redis cache
+2026-08-24 08:15:18 [INFO] PaymentService - Request processed successfully
+2026-08-24 08:15:35 [WARN] Scheduler - Slow response detected
+2026-08-24 08:15:52 [WARN] CacheManager - Cache miss encountered
+2026-08-24 08:16:09 [DEBUG] Scheduler - Token validation started
+2026-08-24 08:16:26 [DEBUG] InventoryService - Loaded configuration settings
+2026-08-24 08:16:43 [INFO] Scheduler - Cache refreshed
+2026-08-24 08:17:00 [DEBUG] Scheduler - Query execution metrics collected
+2026-08-24 08:17:17 [INFO] CacheManager - Heartbeat received
+2026-08-24 08:17:34 [WARN] UserProfile - Slow response detected
+2026-08-24 08:17:51 [WARN] ApiGateway - Memory usage above threshold
+2026-08-24 08:18:08 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:18:25 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:18:42 [INFO] CacheManager - Heartbeat received
+2026-08-24 08:18:59 [DEBUG] CacheManager - Query execution metrics collected
+2026-08-24 08:19:16 [INFO] AuthService - Heartbeat received
+2026-08-24 08:19:33 [INFO] CacheManager - Job completed
+2026-08-24 08:19:50 [INFO] InventoryService - User authenticated
+2026-08-24 08:20:07 [WARN] CacheManager - Memory usage above threshold
+2026-08-24 08:20:24 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:20:41 [WARN] UserProfile - Cache miss encountered
+2026-08-24 08:20:58 [ERROR] CacheManager - NullReferenceException in request handler
+2026-08-24 08:21:15 [DEBUG] AuthService - Entering method ProcessRequest
+2026-08-24 08:21:32 [DEBUG] UserProfile - Token validation started
+2026-08-24 08:21:49 [DEBUG] Scheduler - Token validation started
+2026-08-24 08:22:06 [WARN] UserProfile - Memory usage above threshold
+2026-08-24 08:22:23 [INFO] InventoryService - Cache refreshed
+2026-08-24 08:22:40 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 08:22:57 [DEBUG] InventoryService - Token validation started
+2026-08-24 08:23:14 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:23:31 [WARN] AuthService - Retry attempt initiated
+2026-08-24 08:23:48 [DEBUG] UserProfile - Entering method ProcessRequest
+2026-08-24 08:24:05 [INFO] PaymentService - Job completed
+2026-08-24 08:24:22 [DEBUG] Scheduler - Loaded configuration settings
+2026-08-24 08:24:39 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 08:24:56 [WARN] Scheduler - Slow response detected
+2026-08-24 08:25:13 [WARN] UserProfile - Slow response detected
+2026-08-24 08:25:30 [DEBUG] InventoryService - Loaded configuration settings
+2026-08-24 08:25:47 [INFO] ApiGateway - Cache refreshed
+2026-08-24 08:26:04 [INFO] ApiGateway - User authenticated
+2026-08-24 08:26:21 [INFO] UserProfile - Cache refreshed
+2026-08-24 08:26:38 [WARN] CacheManager - Slow response detected
+2026-08-24 08:26:55 [INFO] UserProfile - Request processed successfully
+2026-08-24 08:27:12 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:27:29 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 08:27:46 [WARN] PaymentService - Slow response detected
+2026-08-24 08:28:03 [INFO] ApiGateway - User authenticated
+2026-08-24 08:28:20 [INFO] InventoryService - User authenticated
+2026-08-24 08:28:37 [INFO] AuthService - Request processed successfully
+2026-08-24 08:28:54 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 08:29:11 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 08:29:28 [DEBUG] CacheManager - Loaded configuration settings
+2026-08-24 08:29:45 [INFO] InventoryService - User authenticated
+2026-08-24 08:30:02 [ERROR] InventoryService - Message queue publish failed
+2026-08-24 08:30:19 [INFO] InventoryService - Request processed successfully
+2026-08-24 08:30:36 [WARN] AuthService - Memory usage above threshold
+2026-08-24 08:30:53 [DEBUG] CacheManager - Query execution metrics collected
+2026-08-24 08:31:10 [INFO] AuthService - Job completed
+2026-08-24 08:31:27 [ERROR] InventoryService - Database timeout while executing query
+2026-08-24 08:31:44 [INFO] PaymentService - Heartbeat received
+2026-08-24 08:32:01 [DEBUG] Scheduler - Query execution metrics collected
+2026-08-24 08:32:18 [DEBUG] AuthService - Entering method ProcessRequest
+2026-08-24 08:32:35 [DEBUG] InventoryService - Loaded configuration settings
+2026-08-24 08:32:52 [WARN] InventoryService - Slow response detected
+2026-08-24 08:33:09 [DEBUG] ApiGateway - Loaded configuration settings
+2026-08-24 08:33:26 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 08:33:43 [DEBUG] InventoryService - Query execution metrics collected
+2026-08-24 08:34:00 [DEBUG] CacheManager - Entering method ProcessRequest
+2026-08-24 08:34:17 [WARN] PaymentService - Retry attempt initiated
+2026-08-24 08:34:34 [INFO] AuthService - Cache refreshed
+2026-08-24 08:34:51 [INFO] InventoryService - Request processed successfully
+2026-08-24 08:35:08 [INFO] InventoryService - Job completed
+2026-08-24 08:35:25 [DEBUG] UserProfile - Loaded configuration settings
+2026-08-24 08:35:42 [INFO] PaymentService - Cache refreshed
+2026-08-24 08:35:59 [INFO] InventoryService - Cache refreshed
+2026-08-24 08:36:16 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 08:36:33 [INFO] InventoryService - User authenticated
+2026-08-24 08:36:50 [WARN] PaymentService - Slow response detected
+2026-08-24 08:37:07 [WARN] Scheduler - Cache miss encountered
+2026-08-24 08:37:24 [INFO] Scheduler - User authenticated
+2026-08-24 08:37:41 [INFO] Scheduler - Heartbeat received
+2026-08-24 08:37:58 [DEBUG] AuthService - Query execution metrics collected
+2026-08-24 08:38:15 [WARN] ApiGateway - Cache miss encountered
+2026-08-24 08:38:32 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 08:38:49 [INFO] ApiGateway - User authenticated
+2026-08-24 08:39:06 [INFO] AuthService - Request processed successfully
+2026-08-24 08:39:23 [WARN] PaymentService - Slow response detected
+2026-08-24 08:39:40 [WARN] InventoryService - Slow response detected
+2026-08-24 08:39:57 [WARN] AuthService - Cache miss encountered
+2026-08-24 08:40:14 [INFO] InventoryService - Heartbeat received
+2026-08-24 08:40:31 [WARN] Scheduler - Memory usage above threshold
+2026-08-24 08:40:48 [WARN] AuthService - Cache miss encountered
+2026-08-24 08:41:05 [DEBUG] Scheduler - Loaded configuration settings
+2026-08-24 08:41:22 [INFO] InventoryService - Cache refreshed
+2026-08-24 08:41:39 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 08:41:56 [ERROR] PaymentService - Database timeout while executing query
+2026-08-24 08:42:13 [INFO] PaymentService - Request processed successfully
+2026-08-24 08:42:30 [WARN] InventoryService - Retry attempt initiated
+2026-08-24 08:42:47 [INFO] UserProfile - Heartbeat received
+2026-08-24 08:43:04 [INFO] PaymentService - Job completed
+2026-08-24 08:43:21 [DEBUG] AuthService - Query execution metrics collected
+2026-08-24 08:43:38 [INFO] PaymentService - Job completed
+2026-08-24 08:43:55 [INFO] PaymentService - Request processed successfully
+2026-08-24 08:44:12 [INFO] InventoryService - Cache refreshed
+2026-08-24 08:44:29 [INFO] PaymentService - Job completed
+2026-08-24 08:44:46 [DEBUG] InventoryService - Token validation started
+2026-08-24 08:45:03 [ERROR] PaymentService - Message queue publish failed
+2026-08-24 08:45:20 [INFO] UserProfile - Request processed successfully
+2026-08-24 08:45:37 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:45:54 [INFO] ApiGateway - User authenticated
+2026-08-24 08:46:11 [INFO] InventoryService - Cache refreshed
+2026-08-24 08:46:28 [DEBUG] PaymentService - Entering method ProcessRequest
+2026-08-24 08:46:45 [INFO] PaymentService - User authenticated
+2026-08-24 08:47:02 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 08:47:19 [DEBUG] Scheduler - Token validation started
+2026-08-24 08:47:36 [WARN] Scheduler - Slow response detected
+2026-08-24 08:47:53 [INFO] PaymentService - Heartbeat received
+2026-08-24 08:48:10 [DEBUG] UserProfile - Entering method ProcessRequest
+2026-08-24 08:48:27 [INFO] Scheduler - Heartbeat received
+2026-08-24 08:48:44 [WARN] UserProfile - Memory usage above threshold
+2026-08-24 08:49:01 [INFO] CacheManager - Request processed successfully
+2026-08-24 08:49:18 [INFO] PaymentService - Request processed successfully
+2026-08-24 08:49:35 [WARN] ApiGateway - Memory usage above threshold
+2026-08-24 08:49:52 [INFO] Scheduler - Heartbeat received
+2026-08-24 08:50:09 [INFO] Scheduler - User authenticated
+2026-08-24 08:50:26 [DEBUG] CacheManager - Query execution metrics collected
+2026-08-24 08:50:43 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 08:51:00 [DEBUG] PaymentService - Token validation started
+2026-08-24 08:51:17 [DEBUG] AuthService - Query execution metrics collected
+2026-08-24 08:51:34 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:51:51 [DEBUG] PaymentService - Entering method ProcessRequest
+2026-08-24 08:52:08 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 08:52:25 [ERROR] PaymentService - Downstream API returned HTTP 503
+2026-08-24 08:52:42 [WARN] CacheManager - Retry attempt initiated
+2026-08-24 08:52:59 [DEBUG] AuthService - Entering method ProcessRequest
+2026-08-24 08:53:16 [WARN] InventoryService - Retry attempt initiated
+2026-08-24 08:53:33 [WARN] UserProfile - Memory usage above threshold
+2026-08-24 08:53:50 [WARN] AuthService - Retry attempt initiated
+2026-08-24 08:54:07 [DEBUG] ApiGateway - Loaded configuration settings
+2026-08-24 08:54:24 [WARN] Scheduler - Slow response detected
+2026-08-24 08:54:41 [DEBUG] UserProfile - Loaded configuration settings
+2026-08-24 08:54:58 [WARN] PaymentService - Cache miss encountered
+2026-08-24 08:55:15 [DEBUG] PaymentService - Loaded configuration settings
+2026-08-24 08:55:32 [INFO] ApiGateway - Cache refreshed
+2026-08-24 08:55:49 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 08:56:06 [INFO] UserProfile - Job completed
+2026-08-24 08:56:23 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 08:56:40 [INFO] Scheduler - Job completed
+2026-08-24 08:56:57 [WARN] InventoryService - Cache miss encountered
+2026-08-24 08:57:14 [WARN] PaymentService - Slow response detected
+2026-08-24 08:57:31 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 08:57:48 [DEBUG] Scheduler - Query execution metrics collected
+2026-08-24 08:58:05 [WARN] AuthService - Memory usage above threshold
+2026-08-24 08:58:22 [INFO] AuthService - Cache refreshed
+2026-08-24 08:58:39 [INFO] ApiGateway - User authenticated
+2026-08-24 08:58:56 [WARN] CacheManager - Memory usage above threshold
+2026-08-24 08:59:13 [DEBUG] UserProfile - Query execution metrics collected
+2026-08-24 08:59:30 [DEBUG] AuthService - Token validation started
+2026-08-24 08:59:47 [DEBUG] AuthService - Token validation started
+2026-08-24 09:00:04 [ERROR] PaymentService - Downstream API returned HTTP 503
+2026-08-24 09:00:21 [DEBUG] Scheduler - Query execution metrics collected
+2026-08-24 09:00:38 [DEBUG] Scheduler - Token validation started
+2026-08-24 09:00:55 [DEBUG] InventoryService - Token validation started
+2026-08-24 09:01:12 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 09:01:29 [WARN] InventoryService - Retry attempt initiated
+2026-08-24 09:01:46 [INFO] CacheManager - User authenticated
+2026-08-24 09:02:03 [INFO] PaymentService - Heartbeat received
+2026-08-24 09:02:20 [DEBUG] UserProfile - Entering method ProcessRequest
+2026-08-24 09:02:37 [DEBUG] AuthService - Token validation started
+2026-08-24 09:02:54 [ERROR] Scheduler - NullReferenceException in request handler
+2026-08-24 09:03:11 [WARN] PaymentService - Cache miss encountered
+2026-08-24 09:03:28 [DEBUG] CacheManager - Query execution metrics collected
+2026-08-24 09:03:45 [INFO] InventoryService - Cache refreshed
+2026-08-24 09:04:02 [INFO] UserProfile - Request processed successfully
+2026-08-24 09:04:19 [INFO] ApiGateway - Cache refreshed
+2026-08-24 09:04:36 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 09:04:53 [INFO] Scheduler - User authenticated
+2026-08-24 09:05:10 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 09:05:27 [INFO] CacheManager - Job completed
+2026-08-24 09:05:44 [WARN] ApiGateway - Memory usage above threshold
+2026-08-24 09:06:01 [WARN] PaymentService - Retry attempt initiated
+2026-08-24 09:06:18 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 09:06:35 [WARN] AuthService - Retry attempt initiated
+2026-08-24 09:06:52 [INFO] UserProfile - Cache refreshed
+2026-08-24 09:07:09 [WARN] Scheduler - Slow response detected
+2026-08-24 09:07:26 [WARN] AuthService - Slow response detected
+2026-08-24 09:07:43 [WARN] CacheManager - Retry attempt initiated
+2026-08-24 09:08:00 [WARN] AuthService - Memory usage above threshold
+2026-08-24 09:08:17 [WARN] AuthService - Memory usage above threshold
+2026-08-24 09:08:34 [WARN] AuthService - Cache miss encountered
+2026-08-24 09:08:51 [INFO] AuthService - Request processed successfully
+2026-08-24 09:09:08 [INFO] InventoryService - Job completed
+2026-08-24 09:09:25 [DEBUG] PaymentService - Entering method ProcessRequest
+2026-08-24 09:09:42 [DEBUG] InventoryService - Token validation started
+2026-08-24 09:09:59 [DEBUG] PaymentService - Entering method ProcessRequest
+2026-08-24 09:10:16 [INFO] ApiGateway - Heartbeat received
+2026-08-24 09:10:33 [INFO] InventoryService - Heartbeat received
+2026-08-24 09:10:50 [DEBUG] UserProfile - Loaded configuration settings
+2026-08-24 09:11:07 [INFO] CacheManager - User authenticated
+2026-08-24 09:11:24 [INFO] PaymentService - Heartbeat received
+2026-08-24 09:11:41 [DEBUG] Scheduler - Loaded configuration settings
+2026-08-24 09:11:58 [WARN] UserProfile - Retry attempt initiated
+2026-08-24 09:12:15 [DEBUG] PaymentService - Query execution metrics collected
+2026-08-24 09:12:32 [DEBUG] ApiGateway - Token validation started
+2026-08-24 09:12:49 [DEBUG] Scheduler - Token validation started
+2026-08-24 09:13:06 [DEBUG] PaymentService - Entering method ProcessRequest
+2026-08-24 09:13:23 [ERROR] ApiGateway - Database timeout while executing query
+2026-08-24 09:13:40 [WARN] CacheManager - Memory usage above threshold
+2026-08-24 09:13:57 [DEBUG] Scheduler - Token validation started
+2026-08-24 09:14:14 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 09:14:31 [WARN] AuthService - Cache miss encountered
+2026-08-24 09:14:48 [INFO] InventoryService - Request processed successfully
+2026-08-24 09:15:05 [ERROR] CacheManager - NullReferenceException in request handler
+2026-08-24 09:15:22 [WARN] UserProfile - Slow response detected
+2026-08-24 09:15:39 [DEBUG] CacheManager - Token validation started
+2026-08-24 09:15:56 [INFO] InventoryService - Job completed
+2026-08-24 09:16:13 [WARN] Scheduler - Slow response detected
+2026-08-24 09:16:30 [WARN] CacheManager - Slow response detected
+2026-08-24 09:16:47 [WARN] Scheduler - Slow response detected
+2026-08-24 09:17:04 [WARN] Scheduler - Slow response detected
+2026-08-24 09:17:21 [INFO] CacheManager - Cache refreshed
+2026-08-24 09:17:38 [WARN] Scheduler - Cache miss encountered
+2026-08-24 09:17:55 [INFO] PaymentService - Request processed successfully
+2026-08-24 09:18:12 [WARN] InventoryService - Cache miss encountered
+2026-08-24 09:18:29 [INFO] InventoryService - Cache refreshed
+2026-08-24 09:18:46 [WARN] Scheduler - Retry attempt initiated
+2026-08-24 09:19:03 [WARN] CacheManager - Memory usage above threshold
+2026-08-24 09:19:20 [WARN] CacheManager - Retry attempt initiated
+2026-08-24 09:19:37 [WARN] CacheManager - Cache miss encountered
+2026-08-24 09:19:54 [WARN] InventoryService - Memory usage above threshold
+2026-08-24 09:20:11 [INFO] UserProfile - Request processed successfully
+2026-08-24 09:20:28 [WARN] AuthService - Retry attempt initiated
+2026-08-24 09:20:45 [DEBUG] Scheduler - Token validation started
+2026-08-24 09:21:02 [DEBUG] CacheManager - Loaded configuration settings
+2026-08-24 09:21:19 [DEBUG] CacheManager - Query execution metrics collected
+2026-08-24 09:21:36 [INFO] InventoryService - Heartbeat received
+2026-08-24 09:21:53 [INFO] InventoryService - Heartbeat received
+2026-08-24 09:22:10 [WARN] PaymentService - Slow response detected
+2026-08-24 09:22:27 [INFO] ApiGateway - Request processed successfully
+2026-08-24 09:22:44 [WARN] Scheduler - Cache miss encountered
+2026-08-24 09:23:01 [INFO] UserProfile - Heartbeat received
+2026-08-24 09:23:18 [WARN] Scheduler - Memory usage above threshold
+2026-08-24 09:23:35 [WARN] ApiGateway - Retry attempt initiated
+2026-08-24 09:23:52 [ERROR] InventoryService - Database timeout while executing query
+2026-08-24 09:24:09 [INFO] UserProfile - Job completed
+2026-08-24 09:24:26 [INFO] CacheManager - User authenticated
+2026-08-24 09:24:43 [WARN] AuthService - Memory usage above threshold
+2026-08-24 09:25:00 [INFO] UserProfile - User authenticated
+2026-08-24 09:25:17 [WARN] CacheManager - Cache miss encountered
+2026-08-24 09:25:34 [WARN] Scheduler - Slow response detected
+2026-08-24 09:25:51 [WARN] PaymentService - Memory usage above threshold
+2026-08-24 09:26:08 [DEBUG] Scheduler - Query execution metrics collected
+2026-08-24 09:26:25 [WARN] CacheManager - Memory usage above threshold
+2026-08-24 09:26:42 [DEBUG] UserProfile - Entering method ProcessRequest
+2026-08-24 09:26:59 [INFO] CacheManager - User authenticated
+2026-08-24 09:27:16 [DEBUG] ApiGateway - Token validation started
+2026-08-24 09:27:33 [INFO] Scheduler - Request processed successfully
+2026-08-24 09:27:50 [DEBUG] Scheduler - Entering method ProcessRequest
+2026-08-24 09:28:07 [INFO] CacheManager - Request processed successfully
+2026-08-24 09:28:24 [INFO] AuthService - Request processed successfully
+2026-08-24 09:28:41 [INFO] CacheManager - Heartbeat received
+2026-08-24 09:28:58 [DEBUG] CacheManager - Loaded configuration settings
+2026-08-24 09:29:15 [WARN] PaymentService - Slow response detected
+2026-08-24 09:29:32 [DEBUG] Scheduler - Loaded configuration settings
+2026-08-24 09:29:49 [INFO] PaymentService - Job completed
+2026-08-24 09:30:06 [ERROR] CacheManager - Downstream API returned HTTP 503
+2026-08-24 09:30:23 [INFO] CacheManager - Heartbeat received
