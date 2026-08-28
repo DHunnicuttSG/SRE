@@ -18,6 +18,11 @@ def c_to_f(c):
     f = (c * 9/5) + 32
     return f"<h3>{c} degrees Celcius = {f:.2f} degrees Fahrenheit</h3>"
 
+@app.route("/celsius/<float:f>")
+def f_to_c(f):
+    c = (f - 32) * 5/9
+    return f"<h3>{f} degrees Fahrenheit = {c:.2f} degrees Celsius</h3>"
+
 myDB = mysql.connector.connect(
     host = 'localhost',
     database = 'hotelschema',
@@ -94,6 +99,72 @@ def getById(id):
     myCursor.close()
     return jsonify(guests), 200  # notice the output on this one!
 
+# Here is an update function
+@app.route("/guest/<int:id>", methods=['PUT'])
+def updateGuest(id):
+    data = request.get_json()
+
+    fName = data.get("fName")
+    lName = data.get("lName")
+    address = data.get("address")
+    city = data.get("city")
+    state = data.get("state")
+    zip = data.get("zip")
+    phone = data.get("phone")
+
+    myCursor = myDB.cursor()
+
+    sql = """
+        UPDATE guest 
+        SET fName=%s, lName=%s, address=%s, city=%s, state=%s, zip=%s, phone=%s
+        WHERE guestId=%s
+    """
+    vals = (fName, lName, address, city, state, zip, phone, id)
+
+    myCursor.execute(sql, vals)
+    myDB.commit()
+
+    rowsUpdated = myCursor.rowcount
+
+    myCursor.close()
+
+    if rowsUpdated == 0:
+        return jsonify({"message": "Guest not found"}), 404
+
+    updated_record = {
+        "guestId": id,
+        "fName": fName,
+        "lName": lName,
+        "address": address,
+        "city": city,
+        "state": state,
+        "zip": zip,
+        "phone": phone
+    }
+
+    return jsonify(updated_record, "record updated"), 200
+
+# Delete function
+@app.route("/guest/<int:id>", methods=['DELETE'])
+def deleteGuest(id):
+    myCursor = myDB.cursor()
+
+    sql = "DELETE FROM guest WHERE guestId = %s"
+
+    myCursor.execute(sql, (id,))
+    myDB.commit()
+
+    rowsDeleted = myCursor.rowcount
+
+    myCursor.close()
+
+    if rowsDeleted == 0:
+        return jsonify({"message": "Guest not found"}), 404
+
+    return jsonify({
+        "guestId": id,
+        "message": "record deleted"
+    }), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
