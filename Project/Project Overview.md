@@ -7,7 +7,7 @@ The final project will consist of three parts.  Part one will be to create a ful
 For part one of the project you will build a python app. The requirements for the app are as follows:
 * The application can be almost anything you want.  Business apps are preferred.  If you want to do some sort of game, that is accecptable too.  (Be careful, sometimes games are more difficult.) The course is NOT about the app, but the processes behind it. 
 * Must have a login feature. (users and admins)
-* Must use an API
+* App must be an API
 * App must include unit testing 
 * App must be built to an MVC structure
 * App must use a relational database (No Mongo Db or similar)
