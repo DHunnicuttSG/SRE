@@ -53,12 +53,13 @@ The node should report `Ready`. In the lessons, `kubectl` means the command avai
 
 ## Schedule
 
-| Lesson | Focus | Duration |
-|---|---|---:|
-| [Day 1: Workloads and Rollouts](Day_1_Workloads_and_Rollouts.md) | Architecture, `kubectl`, Pods, Deployments, ReplicaSets, updates | 5 hours |
-| [Day 2: Networking and Configuration](Day_2_Networking_and_Configuration.md) | Services, NodePort, ConfigMaps, Secrets, namespaces, resource controls | 5 hours |
-| [Day 3: Storage and Multi-Tier Apps](Day_3_Storage_and_Multi_Tier_Apps.md) | PVs/PVCs, PostgreSQL, probes, internal DNS, Helm | 5 hours |
-| [Day 4: Troubleshooting and Observability](Day_4_Troubleshooting_and_Observability.md) | Failure diagnosis, networking, Prometheus/Grafana, capstone | 5 hours |
+| Lesson | Focus |
+|---|---|
+| [Intro to Kubernetes](01_Intro_to_Kubernetes.md) | A short overview and introduction to Kubernetes |
+| [Workloads and Rollouts](02_Workloads_and_Rollouts.md) | Architecture, `kubectl`, Pods, Deployments, ReplicaSets, updates |
+| [Networking and Configuration](03_Networking_and_Configuration.md) | Services, NodePort, ConfigMaps, Secrets, namespaces, resource controls |
+| [Storage and Multi-Tier Apps](04_Storage_and_Multi_Tier_Apps.md) | PVs/PVCs, PostgreSQL, probes, internal DNS, Helm |
+| [Troubleshooting and Observability](05_Troubleshooting_and_Observability.md) | Failure diagnosis, networking, Prometheus/Grafana, capstone |
 
 ## Study Habits
 
