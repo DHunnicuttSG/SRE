@@ -55,4 +55,4 @@ Once executives realized the severity of the backlash, they swallowed their prid
 1. **Metric Design:** If you were leading Coca-Cola's research team in 1984, how would you redesign the product testing experiment to capture both taste preference *and* emotional attachment/full-can consumption?
 2. **Rollout Strategy:** How might the outcome have differed if Coca-Cola had launched New Coke as a separate SKU (like Diet Coke in 1982) rather than replacing the flagship product?
 3. **Cross-Industry Parallels:** What modern tech or software product updates (e.g., UI overhauls, removed features, forced migrations) mirror the New Coke mistake of optimizing for metrics while ignoring user habits?
-Use code with caution.
+

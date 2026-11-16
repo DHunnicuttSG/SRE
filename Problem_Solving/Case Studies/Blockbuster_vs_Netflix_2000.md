@@ -55,5 +55,3 @@ In 2000, Netflix was small, unprofitable, and easy to dismiss. By focusing only 
 1. **Modernization & Technical Debt:** Think about legacy IT systems (monoliths, on-prem data centers, manual deployment pipelines). Why do organizations often wait until a system is failing before funding a migration, even when the long-term risk is obvious?
 2. **Cannibalizing Your Own Product:** If you were CEO of Blockbuster in 2004, how would you pitch the board on intentionally sacrificing $800 million in annual late-fee revenue to fund an unprofitable online streaming platform?
 3. **SRE & Prod Support Parallel:** In Production Support, teams often rely on "heroics" and manual workarounds (like Blockbuster’s late-fee cash cow) that keep things afloat in the short term while masking systemic decay. How do you distinguish between a **healthy, sustainable system** and a **fragile system running on borrowed time**?
-Use code with caution.
-Send over Case Study 8 whenever you're ready, or let me know if this wraps up your list and you'd like that master comparison table across all the case studies!

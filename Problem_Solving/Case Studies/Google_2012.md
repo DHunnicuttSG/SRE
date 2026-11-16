@@ -55,5 +55,4 @@ Researchers showed that a simple autoregressive model combining lagged CDC groun
 1. **Monitoring & Alerting Parallel:** In SRE and Production Support, teams often rely on **proxy metrics** (e.g., social media mentions, login attempts, queue depth) to detect outages faster than lagging business metrics. How can proxy alerts create "false alarms" like Google Flu Trends, and how do you anchor them to ground truth?
 2. **Model Drift & Calibration:** If you were the data engineering lead responsible for maintaining Google Flu Trends in 2013, how would you redesign the pipeline so the model automatically self-corrects every week using incoming CDC data?
 3. **Human Behavior & Feedback Loops:** Think about an automated dashboard or status page in your organization. How can making a metric visible—or adding automated suggestions to a UI—accidentally skew the data people generate?
-Use code with caution.
-Send over Case Study 9 whenever you're ready, or let me know if this is the final one and you'd like that master comparison table tying all of your case studies together!
+

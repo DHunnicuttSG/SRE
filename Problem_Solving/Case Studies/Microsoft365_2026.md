@@ -57,4 +57,4 @@ To prevent permanent data loss (bounced emails) while clearing a massive backlog
 1. **Monitoring & Alerting:** If a bug lies dormant for 4 months after passing Safe Deployment Practices (SDP), what leading indicators (e.g., tail latency, mutex wait times, CPU steal/system time) might alert an SRE team *before* health checks start failing?
 2. **Change Management:** Should active maintenance windows (which took 14% of capacity offline) automatically freeze or alter automated failover policies in adjacent services?
 3. **Client-Side Resilience:** If you are building an internal microservice or AI agent that depends on Microsoft Graph/Exchange, how would you implement **exponential backoff with jitter** and **circuit breakers** to avoid contributing to a provider's retry storm?
-Use code with caution.
+

@@ -57,5 +57,3 @@ Schedule pressure and financial incentives (avoiding simulator costs for airline
 1. **Fault Tolerance & Redundancy:** If you were designing the input validation layer for MCAS, how should the software handle a discrepancy between Sensor A and Sensor B (e.g., voting logic, graceful degradation, alerting)?
 2. **Runbooks & Operator Training:** In SRE and Production Support, teams often introduce "self-healing" automation (auto-restarts, auto-failovers, auto-scaling). What happens when an undocumented self-healing script fights an on-call engineer during a live incident?
 3. **Alert Fatigue:** How can engineering teams prevent a single upstream component failure from triggering an "alert storm" that obscures the true root cause on an operations dashboard?
-Use code with caution.
-Feel free to send over Case Study 5 whenever you are ready, and I will keep the exact same format going for your class!

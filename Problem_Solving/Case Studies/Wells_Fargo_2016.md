@@ -55,5 +55,3 @@ Wells Fargo’s cross-selling numbers boosted its stock price and made it the wo
 1. **Metric Redesign:** If you were redesigning Wells Fargo’s retail performance dashboard in 2016, what **paired metrics** (volume + quality/guardrail metrics) would you put in place to prevent fake account creation?
 2. **SRE & Prod Support Parallel:** Think about common IT/SRE metrics like *ticket closure count*, *lines of code written*, or *mean time to resolve (MTTR)*. How can poorly designed operational KPIs incentivize engineers to game the system (e.g., closing tickets prematurely, suppressing alerts, or skipping root-cause fixes)?
 3. **Signal vs. Noise:** What automated anomaly detection rules (e.g., accounts with zero balance after 30 days, duplicate phone numbers/emails across profiles) could compliance or data engineering teams have built to flag the fraud years earlier?
-Use code with caution.
-Ready whenever you are—feel free to share Case Study 4 and I will expand and format it to match the rest of your series.

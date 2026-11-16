@@ -58,5 +58,3 @@ Target’s split operational model—combining newly purchased security tools, o
 1. **Architecture & Zero Trust:** If you were designing the network architecture for a large retailer today, how would you isolate third-party vendor portals (like HVAC or facility billing) from store Point-of-Sale systems?
 2. **SRE & Prod Support Parallel:** Think about your own production alerting channels (PagerDuty, Slack, email). What happens when a monitoring tool generates 50 false-positive "Critical" alerts a day, and how do you rebuild trust in your alerting pipeline?
 3. **Automation vs. Human-in-the-Loop:** Target intentionally turned off FireEye’s automated malware-blocking feature out of fear it might disrupt holiday store operations. How do you weigh the risk of **automated remediation causing a self-inflicted outage** against the risk of **slow human response during an active incident**?
-Use code with caution.
-Send over Case Study 6 whenever you're ready, or let me know when you've reached the end of your list and want that final wrap-up/comparison!

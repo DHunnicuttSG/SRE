@@ -55,5 +55,4 @@ Netflix was right that streaming was the future and DVDs were a declining legacy
 1. **Architecture vs. UX:** How could Netflix have decoupled its internal DVD and streaming engineering teams on the backend while still presenting a single, unified interface and billing experience to customers?
 2. **Migration Strategy:** If you were advising Reed Hastings in 2011, how would you have phased the transition from DVD+Streaming bundles to streaming-only plans without triggering mass churn?
 3. **SRE & Prod Support Parallel:** Think about a time a technical team pushed a change that made *their* internal maintenance easier (e.g., deprecating an API, splitting portals, changing auth flows) at the expense of end-user friction. How do you balance internal operational health with user simplicity?
-Use code with caution.
-Would you like to share Case Study 3 so I can expand and format it in the exact same style, or would you like me to create a summary comparison table tying all of these case studies together for your class?
+
